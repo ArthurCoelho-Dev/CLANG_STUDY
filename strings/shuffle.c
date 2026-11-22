@@ -11,24 +11,26 @@ int main()
 
     srand(time(NULL));
 
-    printf("Digite uma palvra: ");
-    scanf("\n%49[^\n]", palavra);
-
-    size_t tam = strlen(palavra);
-
-    strcpy(permuta, palavra);
-
-    for (int i = tam - 1; i > 0; i--)
+    for (int i = 0; i < 100; i++)
     {
-     int j = rand() % (i + 1);
+        printf("Digite uma palvra: ");
+        scanf("\n%49[^\n]", palavra);
 
-     char hold = permuta[i];
-     permuta[i] = permuta[j];
-     permuta[j] = hold;
+        size_t tam = strlen(palavra);
 
+        strcpy(permuta, palavra);
+
+        for (int j = tam - 1; j > 0; j--)
+        {
+            int k = rand() % (j + 1);
+
+            char hold = permuta[j];
+            permuta[j] = permuta[k];
+            permuta[k] = hold;
+        }
+
+        printf("A palavra permutada eh: %s\n\n", permuta);
     }
-    
-    printf("A palavra permutada eh: %s", permuta);
 
     return 0;
 }
